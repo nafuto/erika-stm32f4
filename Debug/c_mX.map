@@ -1,0 +1,825 @@
+Archive member included to satisfy reference by file (symbol)
+
+libee.a(ee_hal_structs.o)     obj/main.o (EE_IRQ_nesting_level)
+libee.a(ee_utils.o)           obj/main.o (EE_system_init)
+libee.a(ee_gnu_change_context_isr.o)
+                              obj/main.o (EE_switch_context)
+libee.a(ee_altick.o)          obj/main.o (EE_alarm_CounterTick)
+libee.a(ee_alsetrel.o)        obj/main.o (EE_alarm_SetRelAlarm)
+libee.a(ee_irqsc.o)           libee.a(ee_gnu_change_context_isr.o) (EE_IRQ_end_instance)
+libee.a(ee_rqexchg.o)         libee.a(ee_irqsc.o) (EE_rq2stk_exchange)
+libee.a(ee_rqinsert.o)        libee.a(ee_altick.o) (EE_rq_insert)
+libee.a(ee_context.o)         libee.a(ee_gnu_change_context_isr.o) (EE_cortex_mx_change_context)
+libee.a(ee_context.o)         libee.a(ee_context.o) (EE_std_run_task_code)
+libee.a(ee_thendin.o)         libee.a(ee_context.o) (EE_thread_end_instance)
+libstm32f4discovery.a(stm32f4_discovery.o)
+                              obj/main.o (STM_EVAL_LEDInit)
+libstm32f4xxspd.a(stm32f4xx_gpio.o)
+                              libstm32f4discovery.a(stm32f4_discovery.o) (GPIO_Init)
+libstm32f4xxspd.a(stm32f4xx_rcc.o)
+                              libstm32f4discovery.a(stm32f4_discovery.o) (RCC_AHB1PeriphClockCmd)
+libstm32f4xxspd.a(stm32f4xx_usart.o)
+                              libstm32f4discovery.a(stm32f4_discovery.o) (USART_Init)
+C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+                              c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o (exit)
+C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+                              C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o) (_global_impure_ptr)
+C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+                              c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o (__libc_init_array)
+C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+                              c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o (memset)
+C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+                              C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o) (__call_exitprocs)
+C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+                              C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o) (atexit)
+C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+                              C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o) (__libc_fini_array)
+C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+                              C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o) (__register_exitproc)
+
+Allocating common symbols
+Common symbol       size              file
+
+EE_IRQ_nesting_level
+                    0x4               libee.a(ee_hal_structs.o)
+EE_alarm_RAM        0xc               obj/eecfg.o
+EE_std_endcycle_next_tid
+                    0x4               libee.a(ee_hal_structs.o)
+EE_th_nact          0x4               obj/eecfg.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00100000         xr
+RAM              0x20000000         0x00020000         xrw
+CCM              0x10000000         0x00010000         xrw
+MEMORY_B1        0x60000000         0x00000000         xr
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crti.o
+LOAD c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+LOAD c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
+LOAD obj/eecfg.o
+LOAD obj/main.o
+LOAD obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+LOAD obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+LOAD libee.a
+LOAD libstm32f4discovery.a
+LOAD libstm32f4xxspd.a
+START GROUP
+LOAD c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m\libgcc.a
+LOAD C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a
+LOAD C:\gnu\ARM\arm-none-eabi\lib\thumb\libm.a
+LOAD C:\gnu\ARM\arm-none-eabi\lib\thumb\libnosys.a
+END GROUP
+
+.text           0x08000000     0x2c70
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x188 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x08000000                __isr_vector
+ *(.text*)
+ .text          0x08000188        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crti.o
+ .text          0x08000188       0x6c c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+ .text          0x080001f4       0x74 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
+                0x080001f4                _start
+                0x080001f4                _mainCRTStartup
+ .text          0x08000268       0x30 obj/eecfg.o
+ .text          0x08000298      0x19c obj/main.o
+                0x080002c8                systick_handler
+                0x08000384                ISR2_systick_handler
+                0x08000392                FuncTaskLedBlink
+                0x080003b2                main
+ .text          0x08000434        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .text.EE_cortex_mx_default_reset_ISR
+                0x08000434       0x40 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x08000434                EE_cortex_mx_default_reset_ISR
+ .text.EE_cortex_mx_default_ISR
+                0x08000474        0x4 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x08000474                EE_CORTEX_MX_DMA1_STREAM4_ISR
+                0x08000474                EE_CORTEX_MX_USART6_ISR
+                0x08000474                EE_CORTEX_MX_DMA1_STREAM6_ISR
+                0x08000474                EE_CORTEX_MX_CRYP_ISR
+                0x08000474                EE_CORTEX_MX_DMA1_STREAM5_ISR
+                0x08000474                EE_CORTEX_MX_BUS_FAULT_ISR
+                0x08000474                EE_CORTEX_MX_PVD_ISR
+                0x08000474                EE_CORTEX_MX_SPI2_ISR
+                0x08000474                EE_CORTEX_MX_CAN1_RX1_ISR
+                0x08000474                EE_CORTEX_MX_DMA2_STREAM5_ISR
+                0x08000474                EE_CORTEX_MX_TIM6_DAC_ISR
+                0x08000474                EE_CORTEX_MX_I2C2_EV_ISR
+                0x08000474                EE_CORTEX_MX_TIM1_UP_TIM10_ISR
+                0x08000474                EE_CORTEX_MX_CAN1_RX0_ISR
+                0x08000474                EE_CORTEX_MX_USART1_ISR
+                0x08000474                EE_CORTEX_MX_TIM8_CC_ISR
+                0x08000474                EE_CORTEX_MX_RTC_Alarm_ISR
+                0x08000474                EE_CORTEX_MX_EXTI2_ISR
+                0x08000474                EE_CORTEX_MX_OTG_HS_ISR
+                0x08000474                EE_CORTEX_MX_DCMI_ISR
+                0x08000474                EE_CORTEX_MX_DMA2_STREAM0_ISR
+                0x08000474                EE_CORTEX_MX_SPI1_ISR
+                0x08000474                EE_cortex_mx_default_ISR
+                0x08000474                EE_CORTEX_MX_ETH_WKUP_ISR
+                0x08000474                EE_CORTEX_MX_TIM8_TRG_COM_TIM14_ISR
+                0x08000474                EE_CORTEX_MX_USAGE_FAULT_ISR
+                0x08000474                EE_CORTEX_MX_TIM7_ISR
+                0x08000474                EE_CORTEX_MX_TIM2_ISR
+                0x08000474                EE_CORTEX_MX_I2C1_EV_ISR
+                0x08000474                EE_CORTEX_MX_TIM1_TRG_COM_TIM11_ISR
+                0x08000474                EE_CORTEX_MX_UART5_ISR
+                0x08000474                EE_CORTEX_MX_UART4_ISR
+                0x08000474                EE_CORTEX_MX_NMI_ISR
+                0x08000474                EE_CORTEX_MX_TIM3_ISR
+                0x08000474                EE_CORTEX_MX_USART3_ISR
+                0x08000474                EE_CORTEX_MX_DMA2_STREAM4_ISR
+                0x08000474                EE_CORTEX_MX_EXTI4_ISR
+                0x08000474                EE_CORTEX_MX_ADC_ISR
+                0x08000474                EE_CORTEX_MX_OTG_HS_EP1_IN_ISR
+                0x08000474                EE_CORTEX_MX_DMA2_STREAM1_ISR
+                0x08000474                EE_CORTEX_MX_CAN1_TX_ISR
+                0x08000474                EE_CORTEX_MX_USART2_ISR
+                0x08000474                EE_CORTEX_MX_SDIO_ISR
+                0x08000474                EE_CORTEX_MX_I2C2_ER_ISR
+                0x08000474                EE_CORTEX_MX_I2C3_EV_ISR
+                0x08000474                EE_CORTEX_MX_HARD_FAULT_ISR
+                0x08000474                EE_CORTEX_MX_DMA1_STREAM3_ISR
+                0x08000474                EE_CORTEX_MX_OTG_HS_EP1_OUT_ISR
+                0x08000474                EE_CORTEX_MX_TIM8_BRK_TIM12_ISR
+                0x08000474                EE_CORTEX_MX_CAN1_SCE_ISR
+                0x08000474                EE_CORTEX_MX_DMA1_STREAM1_ISR
+                0x08000474                EE_CORTEX_MX_TIM4_ISR
+                0x08000474                EE_CORTEX_MX_DMA2_STREAM3_ISR
+                0x08000474                EE_CORTEX_MX_ETH_ISR
+                0x08000474                EE_CORTEX_MX_OTG_FS_ISR
+                0x08000474                EE_CORTEX_MX_CAN2_RX0_ISR
+                0x08000474                EE_CORTEX_MX_CAN2_SCE_ISR
+                0x08000474                EE_CORTEX_MX_FPU_ISR
+                0x08000474                EE_CORTEX_MX_RTC_WKUP_ISR
+                0x08000474                EE_CORTEX_MX_TIM8_UP_TIM13_ISR
+                0x08000474                EE_CORTEX_MX_OTG_FS_WKUP_ISR
+                0x08000474                EE_CORTEX_MX_DMA1_STREAM2_ISR
+                0x08000474                EE_CORTEX_MX_EXTI9_5_ISR
+                0x08000474                EE_CORTEX_MX_EXTI3_ISR
+                0x08000474                EE_CORTEX_MX_EXTI0_ISR
+                0x08000474                EE_CORTEX_MX_I2C1_ER_ISR
+                0x08000474                EE_CORTEX_MX_FLASH_ISR
+                0x08000474                EE_CORTEX_MX_OTG_HS_WKUP_ISR
+                0x08000474                EE_CORTEX_MX_TIM1_BRK_TIM9_ISR
+                0x08000474                EE_CORTEX_MX_I2C3_ER_ISR
+                0x08000474                EE_CORTEX_MX_TIM1_CC_ISR
+                0x08000474                EE_CORTEX_MX_SPI3_ISR
+                0x08000474                EE_CORTEX_MX_EXTI15_10_ISR
+                0x08000474                EE_CORTEX_MX_CAN2_TX_ISR
+                0x08000474                EE_CORTEX_MX_RCC_ISR
+                0x08000474                EE_CORTEX_MX_FSMC_ISR
+                0x08000474                EE_CORTEX_MX_DMA2_STREAM2_ISR
+                0x08000474                EE_CORTEX_MX_DMA2_STREAM7_ISR
+                0x08000474                EE_CORTEX_MX_EXTI1_ISR
+                0x08000474                EE_CORTEX_MX_DEBUG_MONITOR_ISR
+                0x08000474                EE_CORTEX_MX_WWDG_ISR
+                0x08000474                EE_CORTEX_MX_MPU_FAULT_ISR
+                0x08000474                EE_CORTEX_MX_HASH_RNG_ISR
+                0x08000474                EE_CORTEX_MX_DMA2_STREAM6_ISR
+                0x08000474                EE_CORTEX_MX_TIM5_ISR
+                0x08000474                EE_CORTEX_MX_DMA1_STREAM0_ISR
+                0x08000474                EE_CORTEX_MX_TAMP_STAMP_ISR
+                0x08000474                EE_CORTEX_MX_CAN2_RX1_ISR
+                0x08000474                EE_CORTEX_MX_DMA1_Stream7_ISR
+ .text._exit    0x08000478        0x6 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x08000478                _exit
+ *fill*         0x0800047e        0x2 
+ .text          0x08000480      0x244 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+                0x08000480                SystemInit
+                0x080004dc                SystemCoreClockUpdate
+ .text          0x080006c4       0x30 libee.a(ee_hal_structs.o)
+ .text          0x080006f4       0x6c libee.a(ee_utils.o)
+                0x08000724                EE_system_init
+ .text          0x08000760       0x80 libee.a(ee_gnu_change_context_isr.o)
+                0x08000760                EE_set_switch_context_pri
+                0x0800077a                EE_switch_context
+                0x08000784                EE_cortex_mx_pendsv_ISR
+                0x080007c2                EE_cortex_mx_svc_ISR
+ .text          0x080007e0      0x2bc libee.a(ee_altick.o)
+                0x08000810                EE_alarm_insert
+                0x08000954                EE_alarm_CounterTick
+ .text          0x08000a9c       0x7c libee.a(ee_alsetrel.o)
+                0x08000acc                EE_alarm_SetRelAlarm
+ .text          0x08000b18       0xa0 libee.a(ee_irqsc.o)
+                0x08000b48                EE_IRQ_end_instance
+ .text          0x08000bb8       0x74 libee.a(ee_rqexchg.o)
+                0x08000be8                EE_rq2stk_exchange
+ .text          0x08000c2c       0xb0 libee.a(ee_rqinsert.o)
+                0x08000c5c                EE_rq_insert
+ .text          0x08000cdc       0x4e libee.a(ee_context.o)
+                0x08000d0c                EE_cortex_mx_change_context
+ *fill*         0x08000d2a        0x2 
+ .text          0x08000d2c       0x6c libee.a(ee_context.o)
+                0x08000d5c                EE_std_run_task_code
+ .text          0x08000d98       0xf8 libee.a(ee_thendin.o)
+                0x08000dc8                EE_thread_end_instance
+ .text          0x08000e90      0x218 libstm32f4discovery.a(stm32f4_discovery.o)
+                0x08000e90                STM_EVAL_LEDInit
+                0x08000eec                STM_EVAL_LEDOn
+                0x08000f1c                STM_EVAL_LEDOff
+                0x08000f4c                STM_EVAL_LEDToggle
+                0x08000f88                STM_EVAL_COMInit
+ .text          0x080010a8      0x478 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+                0x080010a8                GPIO_DeInit
+                0x080011c8                GPIO_Init
+                0x080012e2                GPIO_StructInit
+                0x08001314                GPIO_PinLockConfig
+                0x08001356                GPIO_ReadInputDataBit
+                0x08001388                GPIO_ReadInputData
+                0x080013a0                GPIO_ReadOutputDataBit
+                0x080013d2                GPIO_ReadOutputData
+                0x080013ea                GPIO_SetBits
+                0x08001406                GPIO_ResetBits
+                0x08001422                GPIO_WriteBit
+                0x08001450                GPIO_Write
+                0x0800146c                GPIO_ToggleBits
+                0x0800148e                GPIO_PinAFConfig
+ .text          0x08001520      0xa74 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+                0x08001520                RCC_DeInit
+                0x08001570                RCC_HSEConfig
+                0x08001594                RCC_WaitForHSEStartUp
+                0x080015e4                RCC_AdjustHSICalibrationValue
+                0x08001620                RCC_HSICmd
+                0x08001640                RCC_LSEConfig
+                0x08001680                RCC_LSICmd
+                0x080016a0                RCC_PLLConfig
+                0x080016dc                RCC_PLLCmd
+                0x080016fc                RCC_PLLI2SConfig
+                0x08001724                RCC_PLLI2SCmd
+                0x08001744                RCC_ClockSecuritySystemCmd
+                0x08001764                RCC_MCO1Config
+                0x080017a0                RCC_MCO2Config
+                0x080017dc                RCC_SYSCLKConfig
+                0x08001814                RCC_GetSYSCLKSource
+                0x08001830                RCC_HCLKConfig
+                0x08001868                RCC_PCLK1Config
+                0x080018a0                RCC_PCLK2Config
+                0x080018d8                RCC_GetClocksFreq
+                0x08001a28                RCC_RTCCLKConfig
+                0x08001a84                RCC_RTCCLKCmd
+                0x08001aa4                RCC_BackupResetCmd
+                0x08001ac4                RCC_I2SCLKConfig
+                0x08001ae0                RCC_AHB1PeriphClockCmd
+                0x08001b1c                RCC_AHB2PeriphClockCmd
+                0x08001b58                RCC_AHB3PeriphClockCmd
+                0x08001b94                RCC_APB1PeriphClockCmd
+                0x08001bd0                RCC_APB2PeriphClockCmd
+                0x08001c0c                RCC_AHB1PeriphResetCmd
+                0x08001c48                RCC_AHB2PeriphResetCmd
+                0x08001c84                RCC_AHB3PeriphResetCmd
+                0x08001cc0                RCC_APB1PeriphResetCmd
+                0x08001cfc                RCC_APB2PeriphResetCmd
+                0x08001d38                RCC_AHB1PeriphClockLPModeCmd
+                0x08001d74                RCC_AHB2PeriphClockLPModeCmd
+                0x08001db0                RCC_AHB3PeriphClockLPModeCmd
+                0x08001dec                RCC_APB1PeriphClockLPModeCmd
+                0x08001e28                RCC_APB2PeriphClockLPModeCmd
+                0x08001e64                RCC_ITConfig
+                0x08001eb0                RCC_GetFlagStatus
+                0x08001f24                RCC_ClearFlag
+                0x08001f40                RCC_GetITStatus
+                0x08001f74                RCC_ClearITPendingBit
+ .text          0x08001f94      0x8f4 libstm32f4xxspd.a(stm32f4xx_usart.o)
+                0x08001f94                USART_DeInit
+                0x08002068                USART_Init
+                0x080021dc                USART_StructInit
+                0x08002214                USART_ClockInit
+                0x08002268                USART_ClockStructInit
+                0x08002292                USART_Cmd
+                0x080022d0                USART_SetPrescaler
+                0x08002308                USART_OverSampling8Cmd
+                0x0800234a                USART_OneBitMethodCmd
+                0x08002388                USART_SendData
+                0x080023aa                USART_ReceiveData
+                0x080023c8                USART_SetAddress
+                0x08002400                USART_ReceiverWakeUpCmd
+                0x0800243e                USART_WakeUpConfig
+                0x08002474                USART_LINBreakDetectLengthConfig
+                0x080024aa                USART_LINCmd
+                0x080024e8                USART_SendBreak
+                0x0800250a                USART_HalfDuplexCmd
+                0x08002548                USART_SetGuardTime
+                0x08002582                USART_SmartCardCmd
+                0x080025c0                USART_SmartCardNACKCmd
+                0x080025fe                USART_IrDAConfig
+                0x08002634                USART_IrDACmd
+                0x08002672                USART_DMACmd
+                0x080026b8                USART_ITConfig
+                0x08002746                USART_GetFlagStatus
+                0x0800277c                USART_ClearFlag
+                0x0800279c                USART_GetITStatus
+                0x08002850                USART_ClearITPendingBit
+ .text          0x08002888        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+ .text.exit     0x08002888       0x28 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+                0x08002888                exit
+ .text          0x080028b0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+ .text          0x080028b0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+ .text.__libc_init_array
+                0x080028b0       0x58 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+                0x080028b0                __libc_init_array
+ .text          0x08002908        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+ .text.memset   0x08002908       0x9c C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+                0x08002908                memset
+ .text          0x080029a4        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+ .text.startup.register_fini
+                0x080029a4       0x1c C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+ .text.__call_exitprocs
+                0x080029c0      0x104 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+                0x080029c0                __call_exitprocs
+ .text          0x08002ac4        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+ .text.atexit   0x08002ac4       0x14 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+                0x08002ac4                atexit
+ .text          0x08002ad8        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+ .text.__libc_fini_array
+                0x08002ad8       0x3c C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+                0x08002ad8                __libc_fini_array
+ .text          0x08002b14        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+ .text.__register_exitproc
+                0x08002b14       0xd8 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+                0x08002b14                __register_exitproc
+ .text          0x08002bec        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtend.o
+ .text          0x08002bec        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtn.o
+ *(.init)
+ .init          0x08002bec        0x4 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crti.o
+                0x08002bec                _init
+ .init          0x08002bf0        0x8 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtn.o
+ *(.fini)
+ .fini          0x08002bf8        0x4 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crti.o
+                0x08002bf8                _fini
+ .fini          0x08002bfc        0x8 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtn.o
+ *crtbegin.o(.ctors)
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+ *(.rodata*)
+ .rodata        0x08002c04       0x1c obj/eecfg.o
+                0x08002c04                EE_hal_thread_body
+                0x08002c08                EE_th_ready_prio
+                0x08002c0c                EE_th_dispatch_prio
+                0x08002c10                EE_alarm_ROM
+ .rodata        0x08002c20       0x48 libstm32f4discovery.a(stm32f4_discovery.o)
+                0x08002c20                GPIO_PIN
+                0x08002c28                GPIO_CLK
+                0x08002c38                COM_USART_CLK
+                0x08002c40                COM_TX_PORT_CLK
+                0x08002c48                COM_RX_PORT_CLK
+                0x08002c50                COM_TX_PIN
+                0x08002c54                COM_RX_PIN
+                0x08002c58                COM_TX_PIN_SOURCE
+                0x08002c5c                COM_RX_PIN_SOURCE
+                0x08002c60                COM_TX_AF
+                0x08002c64                COM_RX_AF
+ .rodata._global_impure_ptr
+                0x08002c68        0x4 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+                0x08002c68                _global_impure_ptr
+ *(.eh_frame*)
+ .eh_frame      0x08002c6c        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+ .eh_frame      0x08002c6c        0x4 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtend.o
+
+.glue_7         0x08002c70        0x0
+ .glue_7        0x08002c70        0x0 linker stubs
+
+.glue_7t        0x08002c70        0x0
+ .glue_7t       0x08002c70        0x0 linker stubs
+
+.vfp11_veneer   0x08002c70        0x0
+ .vfp11_veneer  0x08002c70        0x0 linker stubs
+
+.v4_bx          0x08002c70        0x0
+ .v4_bx         0x08002c70        0x0 linker stubs
+
+.iplt           0x08002c70        0x0
+ .iplt          0x08002c70        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+
+.ARM.extab      0x08002c70        0x0
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ .ARM.extab     0x08002c70        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
+                0x08002c70                __exidx_start = .
+
+.ARM.exidx      0x08002c70        0x8
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+ .ARM.exidx     0x08002c70        0x8 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
+                0x08002c78                __exidx_end = .
+                0x08002c78                __etext = .
+
+.rel.dyn        0x08002c78        0x0
+ .rel.iplt      0x08002c78        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+
+.data           0x20000000      0x4a0 load address 0x08002c78
+                0x20000000                __data_start__ = .
+ *(vtable)
+ *(.data*)
+ .data          0x20000000        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crti.o
+ .data          0x20000000        0x4 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+                0x20000000                __dso_handle
+ .data          0x20000004        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
+ .data          0x20000004       0x14 obj/eecfg.o
+                0x20000004                EE_th_next
+                0x20000008                EE_stkfirst
+                0x2000000c                EE_rqfirst
+                0x20000010                EE_counter_RAM
+ .data          0x20000018        0x0 obj/main.o
+ .data          0x20000018        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .data          0x20000018       0x14 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+                0x20000018                SystemCoreClock
+                0x2000001c                AHBPrescTable
+ .data          0x2000002c        0x0 libee.a(ee_hal_structs.o)
+ .data          0x2000002c        0x0 libee.a(ee_utils.o)
+ .data          0x2000002c        0x0 libee.a(ee_gnu_change_context_isr.o)
+ .data          0x2000002c        0x0 libee.a(ee_altick.o)
+ .data          0x2000002c        0x0 libee.a(ee_alsetrel.o)
+ .data          0x2000002c        0x0 libee.a(ee_irqsc.o)
+ .data          0x2000002c        0x0 libee.a(ee_rqexchg.o)
+ .data          0x2000002c        0x0 libee.a(ee_rqinsert.o)
+ .data          0x2000002c        0x0 libee.a(ee_context.o)
+ .data          0x2000002c        0x0 libee.a(ee_context.o)
+ .data          0x2000002c        0x0 libee.a(ee_thendin.o)
+ .data          0x2000002c       0x28 libstm32f4discovery.a(stm32f4_discovery.o)
+                0x2000002c                GPIO_PORT
+                0x2000003c                COM_USART
+                0x20000044                COM_TX_PORT
+                0x2000004c                COM_RX_PORT
+ .data          0x20000054        0x0 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .data          0x20000054       0x10 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .data          0x20000064        0x0 libstm32f4xxspd.a(stm32f4xx_usart.o)
+ .data          0x20000064        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+ .data          0x20000064        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x20000064        0x4 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+                0x20000064                _impure_ptr
+ .data.impure_data
+                0x20000068      0x428 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+ .data          0x20000490        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+ .data          0x20000490        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+ .data          0x20000490        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+ .data          0x20000490        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+ .data          0x20000490        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+ .data          0x20000490        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+ .data          0x20000490        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtend.o
+ .data          0x20000490        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtn.o
+                0x20000490                . = ALIGN (0x4)
+                0x20000490                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x20000490                PROVIDE (__preinit_array_end, .)
+                0x20000490                . = ALIGN (0x4)
+                0x20000490                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ .init_array.00000
+                0x20000490        0x4 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+ *(.init_array)
+ .init_array    0x20000494        0x4 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+                0x20000498                PROVIDE (__init_array_end, .)
+                0x20000498                . = ALIGN (0x4)
+                0x20000498                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+ .fini_array    0x20000498        0x4 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+                0x2000049c                PROVIDE (__fini_array_end, .)
+ *(.jcr*)
+ .jcr           0x2000049c        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+ .jcr           0x2000049c        0x4 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtend.o
+                0x200004a0                . = ALIGN (0x4)
+                0x200004a0                __data_end__ = .
+
+.igot.plt       0x200004a0        0x0 load address 0x08003118
+ .igot.plt      0x200004a0        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+
+.bss            0x200004a0       0x38 load address 0x08003118
+                0x200004a0                . = ALIGN (0x4)
+                0x200004a0                __bss_start__ = .
+ *(.bss*)
+ .bss           0x200004a0        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crti.o
+ .bss           0x200004a0       0x1c c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+ .bss           0x200004bc        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
+ .bss           0x200004bc        0x4 obj/eecfg.o
+                0x200004bc                EE_sys_ceiling
+ .bss           0x200004c0        0x0 obj/main.o
+ .bss           0x200004c0        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .bss           0x200004c0        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .bss           0x200004c0        0x0 libee.a(ee_hal_structs.o)
+ .bss           0x200004c0        0x0 libee.a(ee_utils.o)
+ .bss           0x200004c0        0x0 libee.a(ee_gnu_change_context_isr.o)
+ .bss           0x200004c0        0x0 libee.a(ee_altick.o)
+ .bss           0x200004c0        0x0 libee.a(ee_alsetrel.o)
+ .bss           0x200004c0        0x0 libee.a(ee_irqsc.o)
+ .bss           0x200004c0        0x0 libee.a(ee_rqexchg.o)
+ .bss           0x200004c0        0x0 libee.a(ee_rqinsert.o)
+ .bss           0x200004c0        0x0 libee.a(ee_context.o)
+ .bss           0x200004c0        0x0 libee.a(ee_context.o)
+ .bss           0x200004c0        0x0 libee.a(ee_thendin.o)
+ .bss           0x200004c0        0x0 libstm32f4discovery.a(stm32f4_discovery.o)
+ .bss           0x200004c0        0x0 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .bss           0x200004c0        0x0 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .bss           0x200004c0        0x0 libstm32f4xxspd.a(stm32f4xx_usart.o)
+ .bss           0x200004c0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+ .bss           0x200004c0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+ .bss           0x200004c0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+ .bss           0x200004c0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+ .bss           0x200004c0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+ .bss           0x200004c0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+ .bss           0x200004c0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+ .bss           0x200004c0        0x0 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+ .bss           0x200004c0        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtend.o
+ .bss           0x200004c0        0x0 c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtn.o
+ *(COMMON)
+ COMMON         0x200004c0       0x10 obj/eecfg.o
+                0x200004c0                EE_alarm_RAM
+                0x200004cc                EE_th_nact
+ COMMON         0x200004d0        0x8 libee.a(ee_hal_structs.o)
+                0x200004d0                EE_IRQ_nesting_level
+                0x200004d4                EE_std_endcycle_next_tid
+                0x200004d8                . = ALIGN (0x4)
+                0x200004d8                __bss_end__ = .
+
+.heap           0x200004d8      0x100
+                0x200004d8                __end__ = .
+                0x200004d8                end = __end__
+ *(.heap*)
+ .heap          0x200004d8      0x100 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x200004d8                __HeapBase
+                0x200005d8                __HeapLimit = .
+
+.stack_dummy    0x200004d8      0xc00
+ *(.stack*)
+ .stack         0x200004d8      0xc00 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x20020000                __StackTop = (ORIGIN (RAM) + LENGTH (RAM))
+                0x2001f400                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
+                0x20020000                PROVIDE (__stack, __StackTop)
+                0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region RAM overflowed with stack)
+                0x10000000                __CcmOrigin = ORIGIN (CCM)
+                0x00010000                __CcmLen = LENGTH (CCM)
+START GROUP
+LOAD c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m\libgcc.a
+LOAD C:\gnu\ARM\arm-none-eabi\lib\thumb\libg.a
+LOAD C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a
+END GROUP
+LOAD c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtend.o
+LOAD c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtn.o
+OUTPUT(c_mX.elf elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x2c
+ .ARM.attributes
+                0x00000000       0x1e c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crti.o
+ .ARM.attributes
+                0x0000001e       0x2e c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtbegin.o
+ .ARM.attributes
+                0x0000004c       0x1c c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
+ .ARM.attributes
+                0x00000068       0x33 obj/eecfg.o
+ .ARM.attributes
+                0x0000009b       0x33 obj/main.o
+ .ARM.attributes
+                0x000000ce       0x1c obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .ARM.attributes
+                0x000000ea       0x33 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .ARM.attributes
+                0x0000011d       0x33 libee.a(ee_hal_structs.o)
+ .ARM.attributes
+                0x00000150       0x33 libee.a(ee_utils.o)
+ .ARM.attributes
+                0x00000183       0x21 libee.a(ee_gnu_change_context_isr.o)
+ .ARM.attributes
+                0x000001a4       0x33 libee.a(ee_altick.o)
+ .ARM.attributes
+                0x000001d7       0x33 libee.a(ee_alsetrel.o)
+ .ARM.attributes
+                0x0000020a       0x33 libee.a(ee_irqsc.o)
+ .ARM.attributes
+                0x0000023d       0x33 libee.a(ee_rqexchg.o)
+ .ARM.attributes
+                0x00000270       0x33 libee.a(ee_rqinsert.o)
+ .ARM.attributes
+                0x000002a3       0x33 libee.a(ee_context.o)
+ .ARM.attributes
+                0x000002d6       0x33 libee.a(ee_context.o)
+ .ARM.attributes
+                0x00000309       0x33 libee.a(ee_thendin.o)
+ .ARM.attributes
+                0x0000033c       0x33 libstm32f4discovery.a(stm32f4_discovery.o)
+ .ARM.attributes
+                0x0000036f       0x33 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .ARM.attributes
+                0x000003a2       0x33 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .ARM.attributes
+                0x000003d5       0x33 libstm32f4xxspd.a(stm32f4xx_usart.o)
+ .ARM.attributes
+                0x00000408       0x30 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000438       0x30 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000468       0x30 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000498       0x30 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x000004c8       0x30 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x000004f8       0x30 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x00000528       0x30 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x00000558       0x30 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x00000588       0x2e c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtend.o
+ .ARM.attributes
+                0x000005b6       0x1e c:/gnu/arm/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7e-m/crtn.o
+
+.comment        0x00000000       0x6e
+ .comment       0x00000000       0x6e obj/eecfg.o
+                                 0x6f (size before relaxing)
+ .comment       0x0000006e       0x6f obj/main.o
+ .comment       0x0000006e       0x6f obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .comment       0x0000006e       0x6f libee.a(ee_hal_structs.o)
+ .comment       0x0000006e       0x6f libee.a(ee_utils.o)
+ .comment       0x0000006e       0x6f libee.a(ee_altick.o)
+ .comment       0x0000006e       0x6f libee.a(ee_alsetrel.o)
+ .comment       0x0000006e       0x6f libee.a(ee_irqsc.o)
+ .comment       0x0000006e       0x6f libee.a(ee_rqexchg.o)
+ .comment       0x0000006e       0x6f libee.a(ee_rqinsert.o)
+ .comment       0x0000006e       0x6f libee.a(ee_context.o)
+ .comment       0x0000006e       0x6f libee.a(ee_context.o)
+ .comment       0x0000006e       0x6f libee.a(ee_thendin.o)
+ .comment       0x0000006e       0x6f libstm32f4discovery.a(stm32f4_discovery.o)
+ .comment       0x0000006e       0x6f libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .comment       0x0000006e       0x6f libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .comment       0x0000006e       0x6f libstm32f4xxspd.a(stm32f4xx_usart.o)
+
+.debug_info     0x00000000     0x5efb
+ .debug_info    0x00000000      0x37a obj/eecfg.o
+ .debug_info    0x0000037a      0xdc1 obj/main.o
+ .debug_info    0x0000113b       0xd1 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_info    0x0000120c      0x5cc obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_info    0x000017d8      0x2f6 libee.a(ee_hal_structs.o)
+ .debug_info    0x00001ace      0x3d5 libee.a(ee_utils.o)
+ .debug_info    0x00001ea3       0xd0 libee.a(ee_gnu_change_context_isr.o)
+ .debug_info    0x00001f73      0x455 libee.a(ee_altick.o)
+ .debug_info    0x000023c8      0x404 libee.a(ee_alsetrel.o)
+ .debug_info    0x000027cc      0x397 libee.a(ee_irqsc.o)
+ .debug_info    0x00002b63      0x304 libee.a(ee_rqexchg.o)
+ .debug_info    0x00002e67      0x324 libee.a(ee_rqinsert.o)
+ .debug_info    0x0000318b      0x300 libee.a(ee_context.o)
+ .debug_info    0x0000348b      0x36e libee.a(ee_context.o)
+ .debug_info    0x000037f9      0x3de libee.a(ee_thendin.o)
+ .debug_info    0x00003bd7      0x6c1 libstm32f4discovery.a(stm32f4_discovery.o)
+ .debug_info    0x00004298      0x624 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_info    0x000048bc      0xc6e libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_info    0x0000552a      0x9d1 libstm32f4xxspd.a(stm32f4xx_usart.o)
+
+.debug_abbrev   0x00000000     0x1a1f
+ .debug_abbrev  0x00000000       0xfa obj/eecfg.o
+ .debug_abbrev  0x000000fa      0x30c obj/main.o
+ .debug_abbrev  0x00000406       0x12 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_abbrev  0x00000418      0x156 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_abbrev  0x0000056e       0xf8 libee.a(ee_hal_structs.o)
+ .debug_abbrev  0x00000666      0x1a4 libee.a(ee_utils.o)
+ .debug_abbrev  0x0000080a       0x14 libee.a(ee_gnu_change_context_isr.o)
+ .debug_abbrev  0x0000081e      0x1de libee.a(ee_altick.o)
+ .debug_abbrev  0x000009fc      0x1a6 libee.a(ee_alsetrel.o)
+ .debug_abbrev  0x00000ba2      0x17b libee.a(ee_irqsc.o)
+ .debug_abbrev  0x00000d1d      0x116 libee.a(ee_rqexchg.o)
+ .debug_abbrev  0x00000e33      0x132 libee.a(ee_rqinsert.o)
+ .debug_abbrev  0x00000f65      0x114 libee.a(ee_context.o)
+ .debug_abbrev  0x00001079      0x14d libee.a(ee_context.o)
+ .debug_abbrev  0x000011c6      0x18a libee.a(ee_thendin.o)
+ .debug_abbrev  0x00001350      0x1a3 libstm32f4discovery.a(stm32f4_discovery.o)
+ .debug_abbrev  0x000014f3      0x1b6 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_abbrev  0x000016a9      0x1f6 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_abbrev  0x0000189f      0x180 libstm32f4xxspd.a(stm32f4xx_usart.o)
+
+.debug_aranges  0x00000000      0x270
+ .debug_aranges
+                0x00000000       0x20 obj/eecfg.o
+ .debug_aranges
+                0x00000020       0x20 obj/main.o
+ .debug_aranges
+                0x00000040       0x30 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_aranges
+                0x00000070       0x20 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_aranges
+                0x00000090       0x20 libee.a(ee_hal_structs.o)
+ .debug_aranges
+                0x000000b0       0x20 libee.a(ee_utils.o)
+ .debug_aranges
+                0x000000d0       0x20 libee.a(ee_gnu_change_context_isr.o)
+ .debug_aranges
+                0x000000f0       0x20 libee.a(ee_altick.o)
+ .debug_aranges
+                0x00000110       0x20 libee.a(ee_alsetrel.o)
+ .debug_aranges
+                0x00000130       0x20 libee.a(ee_irqsc.o)
+ .debug_aranges
+                0x00000150       0x20 libee.a(ee_rqexchg.o)
+ .debug_aranges
+                0x00000170       0x20 libee.a(ee_rqinsert.o)
+ .debug_aranges
+                0x00000190       0x20 libee.a(ee_context.o)
+ .debug_aranges
+                0x000001b0       0x20 libee.a(ee_context.o)
+ .debug_aranges
+                0x000001d0       0x20 libee.a(ee_thendin.o)
+ .debug_aranges
+                0x000001f0       0x20 libstm32f4discovery.a(stm32f4_discovery.o)
+ .debug_aranges
+                0x00000210       0x20 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_aranges
+                0x00000230       0x20 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_aranges
+                0x00000250       0x20 libstm32f4xxspd.a(stm32f4xx_usart.o)
+
+.debug_line     0x00000000     0x361a
+ .debug_line    0x00000000      0x22b obj/eecfg.o
+ .debug_line    0x0000022b      0x55f obj/main.o
+ .debug_line    0x0000078a       0xee obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_line    0x00000878      0x281 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_line    0x00000af9      0x284 libee.a(ee_hal_structs.o)
+ .debug_line    0x00000d7d      0x2af libee.a(ee_utils.o)
+ .debug_line    0x0000102c       0xed libee.a(ee_gnu_change_context_isr.o)
+ .debug_line    0x00001119      0x300 libee.a(ee_altick.o)
+ .debug_line    0x00001419      0x2b7 libee.a(ee_alsetrel.o)
+ .debug_line    0x000016d0      0x2c6 libee.a(ee_irqsc.o)
+ .debug_line    0x00001996      0x28b libee.a(ee_rqexchg.o)
+ .debug_line    0x00001c21      0x299 libee.a(ee_rqinsert.o)
+ .debug_line    0x00001eba      0x294 libee.a(ee_context.o)
+ .debug_line    0x0000214e      0x2a1 libee.a(ee_context.o)
+ .debug_line    0x000023ef      0x2f4 libee.a(ee_thendin.o)
+ .debug_line    0x000026e3      0x370 libstm32f4discovery.a(stm32f4_discovery.o)
+ .debug_line    0x00002a53      0x377 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_line    0x00002dca      0x43b libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_line    0x00003205      0x415 libstm32f4xxspd.a(stm32f4xx_usart.o)
+
+.debug_str      0x00000000     0x20c9
+ .debug_str     0x00000000      0x2d7 obj/eecfg.o
+                                0x321 (size before relaxing)
+ .debug_str     0x000002d7      0x5bd obj/main.o
+                                0x921 (size before relaxing)
+ .debug_str     0x00000894      0x264 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+                                0x3e0 (size before relaxing)
+ .debug_str     0x00000af8       0x6d libee.a(ee_hal_structs.o)
+                                0x337 (size before relaxing)
+ .debug_str     0x00000b65       0xd9 libee.a(ee_utils.o)
+                                0x3cc (size before relaxing)
+ .debug_str     0x00000c3e      0x111 libee.a(ee_altick.o)
+                                0x418 (size before relaxing)
+ .debug_str     0x00000d4f       0x82 libee.a(ee_alsetrel.o)
+                                0x3ed (size before relaxing)
+ .debug_str     0x00000dd1       0xcb libee.a(ee_irqsc.o)
+                                0x395 (size before relaxing)
+ .debug_str     0x00000e9c       0x80 libee.a(ee_rqexchg.o)
+                                0x34a (size before relaxing)
+ .debug_str     0x00000f1c       0x76 libee.a(ee_rqinsert.o)
+                                0x345 (size before relaxing)
+ .debug_str     0x00000f92       0x88 libee.a(ee_context.o)
+                                0x352 (size before relaxing)
+ .debug_str     0x0000101a       0xa1 libee.a(ee_context.o)
+                                0x39a (size before relaxing)
+ .debug_str     0x000010bb       0x8f libee.a(ee_thendin.o)
+                                0x3b2 (size before relaxing)
+ .debug_str     0x0000114a      0x400 libstm32f4discovery.a(stm32f4_discovery.o)
+                                0x5cd (size before relaxing)
+ .debug_str     0x0000154a      0x1e2 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+                                0x4ee (size before relaxing)
+ .debug_str     0x0000172c      0x5c3 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+                                0x89b (size before relaxing)
+ .debug_str     0x00001cef      0x3da libstm32f4xxspd.a(stm32f4xx_usart.o)
+                                0x6da (size before relaxing)
+
+.debug_frame    0x00000000     0x16ec
+ .debug_frame   0x00000000       0x60 obj/eecfg.o
+ .debug_frame   0x00000060       0xf0 obj/main.o
+ .debug_frame   0x00000150       0x7c obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_frame   0x000001cc       0x60 libee.a(ee_hal_structs.o)
+ .debug_frame   0x0000022c       0x88 libee.a(ee_utils.o)
+ .debug_frame   0x000002b4       0xb4 libee.a(ee_altick.o)
+ .debug_frame   0x00000368       0x88 libee.a(ee_alsetrel.o)
+ .debug_frame   0x000003f0       0x88 libee.a(ee_irqsc.o)
+ .debug_frame   0x00000478       0x88 libee.a(ee_rqexchg.o)
+ .debug_frame   0x00000500       0x88 libee.a(ee_rqinsert.o)
+ .debug_frame   0x00000588       0x84 libee.a(ee_context.o)
+ .debug_frame   0x0000060c       0x84 libee.a(ee_context.o)
+ .debug_frame   0x00000690       0x84 libee.a(ee_thendin.o)
+ .debug_frame   0x00000714       0xd0 libstm32f4discovery.a(stm32f4_discovery.o)
+ .debug_frame   0x000007e4      0x23c libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_frame   0x00000a20      0x6d4 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_frame   0x000010f4      0x490 libstm32f4xxspd.a(stm32f4xx_usart.o)
+ .debug_frame   0x00001584       0x28 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+ .debug_frame   0x000015ac       0x2c C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+ .debug_frame   0x000015d8       0x30 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+ .debug_frame   0x00001608       0x54 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000165c       0x28 C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00001684       0x2c C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+ .debug_frame   0x000016b0       0x3c C:\gnu\ARM\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+
+.debug_ranges   0x00000000       0x28
+ .debug_ranges  0x00000000       0x28 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o

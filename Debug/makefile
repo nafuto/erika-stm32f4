@@ -38,11 +38,18 @@ EEOPT += __USE_STM32F4XX_SPD_GPIO__
 EEOPT += __USE_STM32F4XX_SPD_RCC__
 EEOPT += __USE_STM32F4XX_SPD_USART__
 
-EEOPT += __USE_STM32F4_DISCOVERY_LCD__
+EEOPT += __USE_STM32F4_DISCOVERY_AUDIO__
 EEOPT += __USE_STM32F4XX_SPD_GPIO__
 EEOPT += __USE_STM32F4XX_SPD_RCC__
-EEOPT += __USE_STM32F4XX_SPD_FSMC__
-EEOPT += __USE_STM32F4_DISCOVERY_LCD_LOG__
+EEOPT += __USE_STM32F4XX_SPD_DMA__
+EEOPT += __USE_STM32F4XX_SPD_SPI__
+EEOPT += __USE_STM32F4XX_SPD_DAC__
+EEOPT += __USE_STM32F4XX_SPD_I2C__
+
+EEOPT += __USE_STM32F4_DISCOVERY_ACCEL__
+EEOPT += __USE_STM32F4XX_SPD_GPIO__
+EEOPT += __USE_STM32F4XX_SPD_RCC__
+EEOPT += __USE_STM32F4XX_SPD_SPI__
 ### Setting Erika's variables:
 # ERIKA_FILES= ../../..
 # APPBASE = .
@@ -62,8 +69,6 @@ RTDRUID_CONFIGURATOR_NUMBER:=1278
 EEOPT += DEBUG
 EEOPT += __USE_SYSTICK__
 EEOPT += __ADD_LIBS__
-EEOPT += __NOT_USE_CC2420_CCA_PIN__
-EEOPT += USE_LCD_LOG
 
 
 ############################################################################
@@ -80,6 +85,7 @@ EEOPT += __GNU__
 EEOPT += __FP__
 EEOPT += __MONO__
 EEOPT += __ALARMS__
+EEOPT += __FP_NO_RESOURCE__
 EEOPT += __DISABLE_EEOPT_DEFINES__
 
 
@@ -149,7 +155,7 @@ LIB_OPT  += __LIB_CC2420__
 # Sources
 #
 ############################################################################
-APP_SRCS += eecfg.c code.c
+APP_SRCS += eecfg.c main.c
 
 
 ############################################################################

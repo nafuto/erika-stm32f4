@@ -10,38 +10,32 @@
  *
  **************************************************************************/
     /* Definition of task's body */
-    DeclareTask(TaskSender);
-    DeclareTask(TaskReceiver);
+    DeclareTask(TaskLedBlink);
 
     const EE_THREAD_PTR EE_hal_thread_body[EE_MAX_TASK] = {
-        &FuncTaskSender,		/* thread TaskSender */
-        &FuncTaskReceiver 		/* thread TaskReceiver */
+        &FuncTaskLedBlink 		/* thread TaskLedBlink */
 
     };
 
     /* ready priority */
     const EE_TYPEPRIO EE_th_ready_prio[EE_MAX_TASK] = {
-        0x1U,		/* thread TaskSender */
-        0x2U 		/* thread TaskReceiver */
+        0x1U 		/* thread TaskLedBlink */
     };
 
     /* dispatch priority */
     const EE_TYPEPRIO EE_th_dispatch_prio[EE_MAX_TASK] = {
-        0x1U,		/* thread TaskSender */
-        0x2U 		/* thread TaskReceiver */
+        0x1U 		/* thread TaskLedBlink */
     };
 
     /* thread status */
     #if defined(__MULTI__) || defined(__WITH_STATUS__)
         EE_TYPESTATUS EE_th_status[EE_MAX_TASK] = {
-            EE_READY,
             EE_READY
         };
     #endif
 
     /* next thread */
     EE_TID EE_th_next[EE_MAX_TASK] = {
-        EE_NIL,
         EE_NIL
     };
 
@@ -54,20 +48,6 @@
 
     /* system ceiling */
     EE_TYPEPRIO EE_sys_ceiling= 0x0000U;
-
-
-
-/***************************************************************************
- *
- * Mutex
- *
- **************************************************************************/
-    const EE_TYPEPRIO EE_resource_ceiling[EE_MAX_RESOURCE]= {
-        0x2U,		/* resource CONSOLE_MUTEX */
-        0x2U 		/* resource RADIO_MUTEX */
-    };
-
-    EE_TYPEPRIO EE_resource_oldceiling[EE_MAX_RESOURCE];
 
 
 
@@ -88,7 +68,7 @@
  *
  **************************************************************************/
     const EE_alarm_ROM_type   EE_alarm_ROM[EE_ALARM_ROM_SIZE] = {
-        {0, EE_ALARM_ACTION_TASK    , TaskSender, NULL}
+        {0, EE_ALARM_ACTION_TASK    , TaskLedBlink, NULL}
     };
 
     EE_alarm_RAM_type         EE_alarm_RAM[EE_MAX_ALARM];

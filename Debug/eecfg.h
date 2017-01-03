@@ -13,18 +13,15 @@
  **************************************************************************/
 
     /* TASK definition */
-    #define EE_MAX_TASK 2
-    #define TaskSender 0
-    #define TaskReceiver 1
+    #define EE_MAX_TASK 1
+    #define TaskLedBlink 0
 
     /* MUTEX definition */
-    #define EE_MAX_RESOURCE 2U
-    #define CONSOLE_MUTEX 0U
-    #define RADIO_MUTEX 1U
+    #define EE_MAX_RESOURCE 0U
 
     /* ALARM definition */
     #define EE_MAX_ALARM 1U
-    #define AlarmSender 0U
+    #define AlarmLedBlink 0U
 
     /* SCHEDULING TABLE definition */
     #define EE_MAX_SCHEDULETABLE 0U
@@ -44,8 +41,8 @@
     #define EE_CURRENTCPU 0
 
     /* Number of isr 2 */
-    #define EE_MAX_ISR2   2
-    #define EE_MAX_ISR_ID 2
+    #define EE_MAX_ISR2   1
+    #define EE_MAX_ISR_ID 1
 
 #ifndef __DISABLE_EEOPT_DEFINES__
 
@@ -57,8 +54,6 @@
  **************************************************************************/
 #define __USE_SYSTICK__
 #define __ADD_LIBS__
-#define __NOT_USE_CC2420_CCA_PIN__
-#define USE_LCD_LOG
 
 
 /***************************************************************************
@@ -75,6 +70,7 @@
 #define __FP__
 #define __MONO__
 #define __ALARMS__
+#define __FP_NO_RESOURCE__
 
 #endif
 
@@ -87,8 +83,6 @@
  **************************************************************************/
 #define EE_CORTEX_MX_SYSTICK_ISR systick_handler
 #define EE_CORTEX_MX_SYSTICK_ISR_PRI EE_ISR_PRI_1
-#define EE_CORTEX_MX_EXTI4_ISR CC2420_INTERRUPT_NAME
-#define EE_CORTEX_MX_EXTI4_ISR_PRI EE_ISR_PRI_2
 
 
 /***************************************************************************
