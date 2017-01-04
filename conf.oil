@@ -55,6 +55,8 @@ CPU mySystem {
 		CPU_DATA = CORTEX_MX {
 			MODEL = M4;
 			APP_SRC = "main.c";
+			APP_SRC = "diskio.c";
+			APP_SRC = "ff.c";
 			//COMPILER_TYPE = KEIL; 
 			COMPILER_TYPE = GNU;
 			MULTI_STACK = FALSE;
@@ -85,7 +87,9 @@ CPU mySystem {
                 USEEXTI = TRUE;
                 USESYSCFG = TRUE; 
                 USEMISC = TRUE;
-                USEUSART = TRUE;           		  
+                USEUSART = TRUE;
+                USESDIO = TRUE;
+                USEDMA = TRUE;           		  
             };
 		};
 		
@@ -94,12 +98,11 @@ CPU mySystem {
 			STM32F4_DISCOVERY = ENABLE {
                 USELEDS = TRUE;
                 USECOM = TRUE;
+                USESD = TRUE;
 				USEAUDIO = TRUE;
 				USEACCEL = TRUE; 
 			};			
 		};
-		
-		LIB = ENABLE { NAME = "CC2420";};
 				
 		STATUS = EXTENDED;
 		STARTUPHOOK = FALSE;
@@ -121,6 +124,12 @@ CPU mySystem {
 		ACTION = ACTIVATETASK { TASK = TaskLedBlink; };
 	};
 	
+	TASK TaskSDCard {
+        PRIORITY = 1;
+        STACK = SHARED;
+        SCHEDULE = FULL;
+    };
+	
 	TASK TaskLedBlink {
 		PRIORITY = 0x01;   /* Low priority */
 		AUTOSTART = FALSE;
@@ -134,5 +143,17 @@ CPU mySystem {
 		ENTRY = "SYSTICK";
 		PRIORITY = 1;
 	};
+	
+	ISR SDIO_IRQHandler {
+        CATEGORY = 1;
+        ENTRY = "SDIO";
+        PRIORITY = 2;
+    };
+     
+    ISR SD_SDIO_DMA_IRQHandler {
+        CATEGORY = 1;
+        ENTRY = "DMA2_STREAM3";
+        PRIORITY = 2;
+    };
 
 };

@@ -10,32 +10,38 @@
  *
  **************************************************************************/
     /* Definition of task's body */
+    DeclareTask(TaskSDCard);
     DeclareTask(TaskLedBlink);
 
     const EE_THREAD_PTR EE_hal_thread_body[EE_MAX_TASK] = {
+        &FuncTaskSDCard,		/* thread TaskSDCard */
         &FuncTaskLedBlink 		/* thread TaskLedBlink */
 
     };
 
     /* ready priority */
     const EE_TYPEPRIO EE_th_ready_prio[EE_MAX_TASK] = {
+        0x1U,		/* thread TaskSDCard */
         0x1U 		/* thread TaskLedBlink */
     };
 
     /* dispatch priority */
     const EE_TYPEPRIO EE_th_dispatch_prio[EE_MAX_TASK] = {
+        0x1U,		/* thread TaskSDCard */
         0x1U 		/* thread TaskLedBlink */
     };
 
     /* thread status */
     #if defined(__MULTI__) || defined(__WITH_STATUS__)
         EE_TYPESTATUS EE_th_status[EE_MAX_TASK] = {
+            EE_READY,
             EE_READY
         };
     #endif
 
     /* next thread */
     EE_TID EE_th_next[EE_MAX_TASK] = {
+        EE_NIL,
         EE_NIL
     };
 

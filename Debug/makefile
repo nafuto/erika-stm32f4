@@ -8,9 +8,13 @@
 EEOPT += __USE_STM32F4XX_SPD__
 
 
+EEOPT += __USE_STM32F4XX_SPD_DMA__
+
 EEOPT += __USE_STM32F4XX_SPD_EXTI__
 
 EEOPT += __USE_STM32F4XX_SPD_GPIO__
+
+EEOPT += __USE_STM32F4XX_SPD_SDIO__
 
 EEOPT += __USE_STM32F4XX_SPD_SPI__
 
@@ -50,6 +54,12 @@ EEOPT += __USE_STM32F4_DISCOVERY_ACCEL__
 EEOPT += __USE_STM32F4XX_SPD_GPIO__
 EEOPT += __USE_STM32F4XX_SPD_RCC__
 EEOPT += __USE_STM32F4XX_SPD_SPI__
+
+EEOPT += __USE_STM32F4_DISCOVERY_SD__
+EEOPT += __USE_STM32F4XX_SPD_GPIO__
+EEOPT += __USE_STM32F4XX_SPD_RCC__
+EEOPT += __USE_STM32F4XX_SPD_DMA__
+EEOPT += __USE_STM32F4XX_SPD_SDIO__
 ### Setting Erika's variables:
 # ERIKA_FILES= ../../..
 # APPBASE = .
@@ -147,7 +157,6 @@ LIBS    +=
 LIB_OPT  += __LIB_ST_CMSIS__
 LIB_OPT  += __LIB_STM32F4XX_SPD__
 LIB_OPT  += __LIB_STM32F4_DISCOVERY__
-LIB_OPT  += __LIB_CC2420__
 
 
 ############################################################################
@@ -155,7 +164,7 @@ LIB_OPT  += __LIB_CC2420__
 # Sources
 #
 ############################################################################
-APP_SRCS += eecfg.c main.c
+APP_SRCS += eecfg.c main.c diskio.c ff.c
 
 
 ############################################################################

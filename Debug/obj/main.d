@@ -38,12 +38,18 @@ obj/main.o: /cygdrive/c/Users/chungtv/workspace/Erika_Demo/main.c \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_i2c.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h \
+ /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_sdio.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_spi.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/misc.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4-Discovery/inc/stm32f4_discovery.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/pkg/kernel/oo/inc/ee_oo_api.h \
+ /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4-Discovery/inc/stm32f4_discovery_sdio_sd.h \
+ /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4-Discovery/inc/stm32f4_discovery.h \
+ /cygdrive/c/Users/chungtv/workspace/Erika_Demo/ff.h \
+ /cygdrive/c/Users/chungtv/workspace/Erika_Demo/integer.h \
+ /cygdrive/c/Users/chungtv/workspace/Erika_Demo/ffconf.h \
  /cygdrive/c/Users/chungtv/workspace/Erika_Demo/main.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4-Discovery/inc/stm32f4_discovery_audio_codec.h \
  /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h \
@@ -129,6 +135,8 @@ eecfg.h:
 
 /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h:
 
+/cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_sdio.h:
+
 /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_spi.h:
 
 /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h:
@@ -140,6 +148,16 @@ eecfg.h:
 /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4-Discovery/inc/stm32f4_discovery.h:
 
 /cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/pkg/kernel/oo/inc/ee_oo_api.h:
+
+/cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4-Discovery/inc/stm32f4_discovery_sdio_sd.h:
+
+/cygdrive/c/Users/chungtv/DOWNLO~1/COMPRE~1/eclipse/plugins/COMEUE~4.201/ee_files/contrib/st/STM32F4-Discovery/inc/stm32f4_discovery.h:
+
+/cygdrive/c/Users/chungtv/workspace/Erika_Demo/ff.h:
+
+/cygdrive/c/Users/chungtv/workspace/Erika_Demo/integer.h:
+
+/cygdrive/c/Users/chungtv/workspace/Erika_Demo/ffconf.h:
 
 /cygdrive/c/Users/chungtv/workspace/Erika_Demo/main.h:
 

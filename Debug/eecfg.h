@@ -13,8 +13,9 @@
  **************************************************************************/
 
     /* TASK definition */
-    #define EE_MAX_TASK 1
-    #define TaskLedBlink 0
+    #define EE_MAX_TASK 2
+    #define TaskSDCard 0
+    #define TaskLedBlink 1
 
     /* MUTEX definition */
     #define EE_MAX_RESOURCE 0U
@@ -42,7 +43,7 @@
 
     /* Number of isr 2 */
     #define EE_MAX_ISR2   1
-    #define EE_MAX_ISR_ID 1
+    #define EE_MAX_ISR_ID 3
 
 #ifndef __DISABLE_EEOPT_DEFINES__
 
@@ -83,6 +84,10 @@
  **************************************************************************/
 #define EE_CORTEX_MX_SYSTICK_ISR systick_handler
 #define EE_CORTEX_MX_SYSTICK_ISR_PRI EE_ISR_PRI_1
+#define EE_CORTEX_MX_SDIO_ISR SDIO_IRQHandler
+#define EE_CORTEX_MX_SDIO_ISR_PRI EE_ISR_PRI_2
+#define EE_CORTEX_MX_DMA2_STREAM3_ISR SD_SDIO_DMA_IRQHandler
+#define EE_CORTEX_MX_DMA2_STREAM3_ISR_PRI EE_ISR_PRI_2
 
 
 /***************************************************************************

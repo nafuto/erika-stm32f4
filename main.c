@@ -44,9 +44,30 @@
 #include "stm32f4xx.h"
 #include "stm32f4_discovery.h"
 #include "kernel/oo/inc/ee_oo_api.h"
+#include "stm32f4_discovery_sdio_sd.h"
+#include "ff.h"
 #include "main.h"
 
 #include <stdio.h>
+
+/* Private variables ---------------------------------------------------------*/
+SD_Error Status = SD_OK;
+
+FATFS filesystem;		/* volume lable */
+
+FRESULT ret;			  /* Result code */
+
+FIL file;				    /* File object */
+
+DIR dir;				    /* Directory object */
+
+FILINFO fno;			  /* File information object */
+
+UINT bw, br;
+
+uint8_t buff[128];
+
+uint8_t test_ok = 0;
 
 /*
  * SysTick ISR2
@@ -57,12 +78,177 @@ ISR2(systick_handler)
 	CounterTick(myCounter);
 }
 
+ISR1(SDIO_IRQHandler) {
+	/* Process All SDIO Interrupt Sources */
+	SD_ProcessIRQSrc();
+}
+
+/**
+ * @brief  This function handles DMA2 Stream3 or DMA2 Stream6 global interrupts
+ *         requests.
+ * @param  None
+ * @retval None
+ */
+ISR1(SD_SDIO_DMA_IRQHANDLER) {
+	/* Process DMA2 Stream3 or DMA2 Stream6 Interrupt Sources */
+	SD_ProcessDMAIRQ();
+}
+/* Private function prototypes -----------------------------------------------*/
+/**
+ * @brief   FatFs err dispose
+ * @param  None
+ * @retval None
+*/
+static void fault_err (FRESULT rc)
+{
+	const char *str =
+			"OK\0" "DISK_ERR\0" "INT_ERR\0" "NOT_READY\0" "NO_FILE\0" "NO_PATH\0"
+			"INVALID_NAME\0" "DENIED\0" "EXIST\0" "INVALID_OBJECT\0" "WRITE_PROTECTED\0"
+			"INVALID_DRIVE\0" "NOT_ENABLED\0" "NO_FILE_SYSTEM\0" "MKFS_ABORTED\0" "TIMEOUT\0"
+			"LOCKED\0" "NOT_ENOUGH_CORE\0" "TOO_MANY_OPEN_FILES\0";
+	FRESULT i;
+
+	for (i = (FRESULT)0; i != rc && *str; i++) {
+		while (*str++) ;
+	}
+	printf("rc=%u FR_%s\r\n", (UINT)rc, str);
+	STM_EVAL_LEDOn(LED6);
+	while(1);
+}
+
+static void DelayTime(volatile uint32_t nCount)
+{
+  volatile uint32_t index = 0;
+  for (index = (100000 * nCount); index != 0; index--);
+}
+
 TASK(TaskLedBlink)
 {
 	STM_EVAL_LEDToggle(LED3);
 	STM_EVAL_LEDToggle(LED4);
 	STM_EVAL_LEDToggle(LED5);
 	STM_EVAL_LEDToggle(LED6);
+}
+
+TASK(TaskSDCard)
+{
+	/* mount the filesystem */
+	//if (f_mount(0, &filesystem) != FR_OK) {
+	if (f_mount(&filesystem, "", 0) != FR_OK) {
+		printf("could not open filesystem \n\r");
+	}
+
+	DelayTime(10);
+	printf("Open a test file (message.txt) \r\n");
+	ret = f_open(&file, "MESSAGE.TXT", FA_READ);
+	printf("ret = %d\r\n",ret);
+	if (ret) {
+		printf("not exist the test file (message.txt)\r\n");
+	} else {
+		printf("Type the file content\r\n");
+		for (;;) {
+			ret = f_read(&file, buff, sizeof(buff), &br);	/* Read a chunk of file */
+			if (ret || !br) {
+				break;			/* Error or end of file */
+			}
+			buff[br] = 0;
+			printf("%s",buff);
+			printf("\r\n");
+		}
+	    if (ret) {
+	    	printf("Read the file error\r\n");
+	    	fault_err(ret);
+	    }
+
+	    printf("Close the file\r\n");
+	    ret = f_close(&file);
+	    if (ret) {
+	    	printf("Close the file error\r\n");
+	    }
+	}
+
+	/*  hello.txt write test*/
+	DelayTime(50);
+	printf("Create a new file (hello.txt)\r\n");
+	ret = f_open(&file, "HELLO.TXT", FA_WRITE | FA_CREATE_ALWAYS);
+	if (ret) {
+		printf("Create a new file error\r\n");
+		fault_err(ret);
+	} else {
+		printf("Write a text data. (hello.txt)\r\n");
+		ret = f_write(&file, "Hello world!", 14, &bw);
+		if (ret) {
+			printf("Write a text data to file error\r\n");
+		} else {
+			printf("%u bytes written\r\n", bw);
+		}
+	    DelayTime(50);
+	    printf("Close the file\r\n");
+	    ret = f_close(&file);
+	    if (ret) {
+	    	printf("Close the hello.txt file error\r\n");
+	    }
+	}
+
+	/*  hello.txt read test*/
+	DelayTime(50);
+	printf("read the file (hello.txt)\r\n");
+	ret = f_open(&file, "HELLO.TXT", FA_READ);
+	if (ret) {
+		printf("open hello.txt file error\r\n");
+	} else {
+		printf("Type the file content(hello.txt)\r\n");
+		for (;;) {
+			ret = f_read(&file, buff, sizeof(buff), &br);	/* Read a chunk of file */
+			if (ret || !br) {
+				break;			/* Error or end of file */
+			}
+			buff[br] = 0;
+			printf("%s",buff);
+			printf("\r\n");
+		}
+	    if (ret) {
+	    	printf("Read file (hello.txt) error\r\n");
+	    	fault_err(ret);
+	    }
+
+	    printf("Close the file (hello.txt)\r\n");
+	    ret = f_close(&file);
+	    if (ret) {
+	    	printf("Close the file (hello.txt) error\r\n");
+	    }
+	}
+
+	/*  directory display test*/
+	DelayTime(50);
+	printf("Open root directory\r\n");
+	ret = f_opendir(&dir, "");
+	if (ret) {
+		printf("Open root directory error\r\n");
+	} else {
+		printf("Directory listing...\r\n");
+		for (;;) {
+			ret = f_readdir(&dir, &fno);		/* Read a directory item */
+			if (ret || !fno.fname[0]) {
+				break;	/* Error or end of dir */
+			}
+			if (fno.fattrib & AM_DIR) {
+				printf("  <dir>  %s\r\n", fno.fname);
+			} else {
+				printf("%8lu  %s\r\n", fno.fsize, fno.fname);
+			}
+		}
+		if (ret) {
+			printf("Read a directory error\r\n");
+			fault_err(ret);
+	    }
+	}
+
+	DelayTime(50);
+	printf("Test completed\r\n");
+
+
+	SetRelAlarm(AlarmLedBlink, 10, 500);
 }
 
 int main(void)
@@ -96,7 +282,7 @@ int main(void)
 		 * ticks, and after that periodically every 100 ticks.
 		 * Please note that 1 tick = 1 ms
 		 */
-	SetRelAlarm(AlarmLedBlink, 10, 500);
+	ActivateTask(TaskSDCard);
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
