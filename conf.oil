@@ -124,17 +124,35 @@ CPU mySystem {
 		ACTION = ACTIVATETASK { TASK = TaskLedBlink; };
 	};
 	
+	ALARM AlarmLedBlink2 {
+		COUNTER = myCounter;
+		ACTION = ACTIVATETASK { TASK = TaskLedBlink2; };
+	};
+	
+	ALARM AlarmSDCard {
+		COUNTER = myCounter;
+		ACTION = ACTIVATETASK { TASK = TaskSDCard; };
+	};
+	
 	TASK TaskSDCard {
         PRIORITY = 1;
         STACK = SHARED;
         SCHEDULE = FULL;
     };
 	
-	TASK TaskLedBlink {
-		PRIORITY = 0x01;   /* Low priority */
+	TASK TaskLedBlink { // LED3: RED
+		PRIORITY = 0x01;  
 		AUTOSTART = FALSE;
 		STACK = SHARED;
-		ACTIVATION = 1;    /* only one pending activation */
+		ACTIVATION = 1;    
+		SCHEDULE = FULL;
+	};
+	
+	TASK TaskLedBlink2 { // LED6: BLUE
+		PRIORITY = 0x02;  
+		AUTOSTART = FALSE;
+		STACK = SHARED;
+		ACTIVATION = 1;   
 		SCHEDULE = FULL;
 	};
 	

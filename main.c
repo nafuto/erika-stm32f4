@@ -125,9 +125,19 @@ static void DelayTime(volatile uint32_t nCount)
 TASK(TaskLedBlink)
 {
 	STM_EVAL_LEDToggle(LED3);
-	STM_EVAL_LEDToggle(LED4);
-	STM_EVAL_LEDToggle(LED5);
+//	STM_EVAL_LEDToggle(LED4);
+//	STM_EVAL_LEDToggle(LED5);
+//	STM_EVAL_LEDToggle(LED6);
+//	DelayTime(50);
+}
+
+TASK(TaskLedBlink2)
+{
+//	STM_EVAL_LEDToggle(LED3);
+//	STM_EVAL_LEDToggle(LED4);
+//	STM_EVAL_LEDToggle(LED5);
 	STM_EVAL_LEDToggle(LED6);
+//	DelayTime(50);
 }
 
 TASK(TaskSDCard)
@@ -282,7 +292,10 @@ int main(void)
 		 * ticks, and after that periodically every 100 ticks.
 		 * Please note that 1 tick = 1 ms
 		 */
-	ActivateTask(TaskSDCard);
+//	ActivateTask(TaskSDCard);
+	SetRelAlarm(AlarmLedBlink, 10, 200); //
+	SetRelAlarm(AlarmLedBlink2, 10, 200);
+//	SetRelAlarm(AlarmSDCard, 10, 100);
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
