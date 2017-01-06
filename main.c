@@ -125,13 +125,13 @@ static void DelayTime(volatile uint32_t nCount)
 TASK(TaskLedRed)
 {
 	STM_EVAL_LEDToggle(LED3);
-//	DelayTime(50);
+//	DelayTime(25);
 }
 
 TASK(TaskLedBlue)
 {
 	STM_EVAL_LEDToggle(LED6);
-//	DelayTime(50);
+//	DelayTime(25);
 }
 
 TASK(TaskSDCard)
@@ -285,10 +285,27 @@ int main(void)
 		 * ticks, and after that periodically every 100 ticks.
 		 * Please note that 1 tick = 1 ms
 		 */
-	SetRelAlarm(AlarmLedBlue, 10, 200);
-	ActivateTask(TaskSDCard);
-//	SetRelAlarm(AlarmLedBlink, 10, 200); //
-//	SetRelAlarm(AlarmSDCard, 10, 100);
+	//DEMO 1: 2 den sang theo 2 chu ky khac nhau
+	//DEMO 2: 2 den sang theo cung chu ky
+	// Dat thoi gian delay cho moi den
+	// Doi priority cua tung den de xem ket qua: 1-1, 1-2, 2-1
+	//DEMO 3: Ghi va doc the nho SDCARD
+	//Doi priority cua LED cao hon
+	int demo = 3;
+	switch (demo) {
+	case 1:
+		SetRelAlarm(AlarmLedBlue, 10, 200);
+		SetRelAlarm(AlarmLedRed, 10, 400);
+		break;
+	case 2:
+		SetRelAlarm(AlarmLedBlue, 10, 200);
+		SetRelAlarm(AlarmLedRed, 10, 200);
+		break;
+	case 3:
+//		SetRelAlarm(AlarmLedBlue, 10, 200);
+		ActivateTask(TaskSDCard);
+		break;
+	}
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);

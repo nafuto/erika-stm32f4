@@ -135,7 +135,7 @@ CPU mySystem {
 	};
 	
 	TASK TaskSDCard {
-        PRIORITY = 1;
+        PRIORITY = 0x01;
         STACK = SHARED;
         SCHEDULE = FULL;
     };
@@ -149,7 +149,7 @@ CPU mySystem {
 	};
 	
 	TASK TaskLedBlue { // LED6: BLUE
-		PRIORITY = 0x02;  
+		PRIORITY = 0x01;  
 		AUTOSTART = FALSE;
 		STACK = SHARED;
 		ACTIVATION = 1;   
