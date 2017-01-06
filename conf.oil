@@ -119,14 +119,14 @@ CPU mySystem {
 	
 	COUNTER myCounter;
 	
-	ALARM AlarmLedBlink {
+	ALARM AlarmLedRed {
 		COUNTER = myCounter;
-		ACTION = ACTIVATETASK { TASK = TaskLedBlink; };
+		ACTION = ACTIVATETASK { TASK = TaskLedRed; };
 	};
 	
-	ALARM AlarmLedBlink2 {
+	ALARM AlarmLedBlue {
 		COUNTER = myCounter;
-		ACTION = ACTIVATETASK { TASK = TaskLedBlink2; };
+		ACTION = ACTIVATETASK { TASK = TaskLedBlue; };
 	};
 	
 	ALARM AlarmSDCard {
@@ -140,7 +140,7 @@ CPU mySystem {
         SCHEDULE = FULL;
     };
 	
-	TASK TaskLedBlink { // LED3: RED
+	TASK TaskLedRed { // LED3: RED
 		PRIORITY = 0x01;  
 		AUTOSTART = FALSE;
 		STACK = SHARED;
@@ -148,7 +148,7 @@ CPU mySystem {
 		SCHEDULE = FULL;
 	};
 	
-	TASK TaskLedBlink2 { // LED6: BLUE
+	TASK TaskLedBlue { // LED6: BLUE
 		PRIORITY = 0x02;  
 		AUTOSTART = FALSE;
 		STACK = SHARED;

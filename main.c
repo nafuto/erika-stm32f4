@@ -112,7 +112,7 @@ static void fault_err (FRESULT rc)
 		while (*str++) ;
 	}
 	printf("rc=%u FR_%s\r\n", (UINT)rc, str);
-	STM_EVAL_LEDOn(LED6);
+	STM_EVAL_LEDOn(LED4);
 	while(1);
 }
 
@@ -122,20 +122,14 @@ static void DelayTime(volatile uint32_t nCount)
   for (index = (100000 * nCount); index != 0; index--);
 }
 
-TASK(TaskLedBlink)
+TASK(TaskLedRed)
 {
 	STM_EVAL_LEDToggle(LED3);
-//	STM_EVAL_LEDToggle(LED4);
-//	STM_EVAL_LEDToggle(LED5);
-//	STM_EVAL_LEDToggle(LED6);
 //	DelayTime(50);
 }
 
-TASK(TaskLedBlink2)
+TASK(TaskLedBlue)
 {
-//	STM_EVAL_LEDToggle(LED3);
-//	STM_EVAL_LEDToggle(LED4);
-//	STM_EVAL_LEDToggle(LED5);
 	STM_EVAL_LEDToggle(LED6);
 //	DelayTime(50);
 }
@@ -257,8 +251,7 @@ TASK(TaskSDCard)
 	DelayTime(50);
 	printf("Test completed\r\n");
 
-
-	SetRelAlarm(AlarmLedBlink, 10, 500);
+	SetRelAlarm(AlarmLedRed, 10, 500);
 }
 
 int main(void)
@@ -292,9 +285,9 @@ int main(void)
 		 * ticks, and after that periodically every 100 ticks.
 		 * Please note that 1 tick = 1 ms
 		 */
-//	ActivateTask(TaskSDCard);
-	SetRelAlarm(AlarmLedBlink, 10, 200); //
-	SetRelAlarm(AlarmLedBlink2, 10, 200);
+	SetRelAlarm(AlarmLedBlue, 10, 200);
+	ActivateTask(TaskSDCard);
+//	SetRelAlarm(AlarmLedBlink, 10, 200); //
 //	SetRelAlarm(AlarmSDCard, 10, 100);
 
 	/* Forever loop: background activities (if any) should go here */
